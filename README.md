@@ -1,8 +1,8 @@
-##Developing Oncoscape inside a Docker container
+﻿##Developing Oncoscape inside a Docker container
 
 Docker is not just for running and deploying applications, it’s great for development too. Using Docker for development provides consistent, clean development environment. Each build can be in a fresh environment without any dependencies on your development workstation or clashes/contamination with your workstation. All developers can use the same OS, same system libraries, same language runtime, no matter what host OS they are using (even Windows). The development environment is the exact same as the production environment. You only need Docker to develop; you don’t need to install a bunch of language environments, libraries and tools on your machine. 
 
-A Docker conatiner recipe for the Oncoscape development environment is located at https://github.com/FredHutch/Oncoscape-dev-environment
+A Docker container recipe for the Oncoscape development environment is located at https://github.com/FredHutch/Oncoscape-dev-environment
 
 To use the Oncoscape development container use 'git' to clone the Oncoscape development container repository to your Docker enabled development system, build a container image and then run it. Here are the commands required to create a container image tagged "oncodev" (you can name it something else if you would like): 
 
@@ -88,7 +88,7 @@ In the examples above we cloned the Oncocape repository inside of the container.
 docker run -ti -p 80:80 -v /Users/myuser/Oncoscape:/opt/Oncoscape --name myoncodev02 --hostname myoncodev02 oncodev
 ```
 
-After running the above command, you should see that the '/User/myuser/Oncoscape' folder on your development workstation is now mounted read/write to '/opt/Oncoscape' inside this new container. You can change to this directory and use git just like you do on your workstation. It's worth noting that any modifications to this directory or files it contains inside the container, is directly modifying the files outside of your container. This approach can save you a lot of time and disk space by not having to clone the repo inside each container, but if you need true isolation between each conatiner, this might not be the right approach.
+After running the above command, you should see that the '/User/myuser/Oncoscape' folder on your development workstation is now mounted read/write to '/opt/Oncoscape' inside this new container. You can change to this directory and use git just like you do on your workstation. It's worth noting that any modifications to this directory or files it contains inside the container, is directly modifying the files outside of your container. This approach can save you a lot of time and disk space by not having to clone the repo inside each container, but if you need true isolation between each container, this might not be the right approach.
 
 ***NOTE:*** Windows users can't specify the local folder they want mounted in the traditional *'C:/xyz'* format. You'll need to use the *'/c/xzy'* format. For example *"-v /c/Users/myuser/Oncoscape:/opt/Oncoscape"* will mount 'C:\Users\myuser\Oncoscape' on your workstation to *'/opt/Oncoscape'* inside the container.
 
